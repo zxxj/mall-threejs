@@ -5,3 +5,7 @@ export const http = axios.create({
   baseURL: BASE_URL,
   timeout: TIME_OUT
 })
+
+http.interceptors.response.use((res) => {
+  return res.data
+})
