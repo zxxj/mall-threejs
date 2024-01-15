@@ -73,6 +73,7 @@ const onSearch = (value) => {
   background-color: #fff;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.5s;
 
   .logo {
     width: 249px;

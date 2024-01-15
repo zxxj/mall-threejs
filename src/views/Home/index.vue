@@ -1,7 +1,6 @@
 <script setup>
 import { defineAsyncComponent } from 'vue'
 import Loading from './Loading.vue'
-import Header from './Header.vue'
 
 const asyncComponent = defineAsyncComponent({
   // 加载函数
@@ -14,8 +13,6 @@ const asyncComponent = defineAsyncComponent({
 </script>
 
 <template>
-  <Header />
-
   <Suspense>
     <template #fallback>
       <Loading />
