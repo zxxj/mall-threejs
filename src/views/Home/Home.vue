@@ -1,6 +1,6 @@
 <script setup>
-import { getHomePage } from '@/service/modules/home'
 import { ref } from 'vue'
+import { getHomePage } from '@/service/modules/home'
 
 let result = await getHomePage()
 
