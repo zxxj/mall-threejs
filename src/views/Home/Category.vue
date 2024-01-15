@@ -58,13 +58,15 @@ const router = useRouter()
       box-shadow: 5px 10px 10px #d2d2d2;
       display: flex;
       align-items: center;
+      justify-content: center;
       img {
+        margin-left: -15px;
+        margin-right: 5px;
         width: 50px;
         height: 50px;
       }
 
       .title {
-        margin-left: 15px;
         font-weight: bold;
         font-size: 15px;
         margin-top: 5px;
