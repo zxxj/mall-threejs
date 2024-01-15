@@ -66,7 +66,11 @@ const onSearch = (value) => {
 
 <style scoped lang="scss">
 .container {
+  z-index: 999;
+  position: fixed;
+  width: 100%;
   display: flex;
+  background-color: #fff;
   justify-content: space-between;
   align-items: center;
 

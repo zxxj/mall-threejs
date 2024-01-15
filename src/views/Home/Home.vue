@@ -1,16 +1,31 @@
 <script setup>
-import { ref } from 'vue'
 import { getHomePage } from '@/service/modules/home'
+import Banner from './Banner.vue'
+import Category from './Category.vue'
 
 let result = await getHomePage()
-
-const hero = ref(result.hero)
+console.log(result)
 </script>
 
 <template>
-  <ul>
-    <li v-for="item in hero" :key="item">{{ item.category }}</li>
-  </ul>
+  <div class="container">
+    <div class="banner-bg"></div>
+    <Banner :data="result.banner" />
+    <Category :data="result.sports" />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  position: relative;
+}
+.banner-bg {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 575px;
+  background-color: orangered;
+  transform-origin: 0 0;
+  transform: skew(0, -8deg);
+}
+</style>
