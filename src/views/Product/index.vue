@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import Loading from '@/views/Home/Loading.vue'
 import Card from './components/Card.vue'
+import Scene from './components/Scene.vue'
 import { getProductList } from '@/service/modules/product'
 import { useControlStore } from '@/stores/control'
 
@@ -36,9 +37,17 @@ window.addEventListener('mousewheel', (e) => {
         <img class="icon" src="@/assets/images/recommed.png" />
         <div class="text">推荐商品</div>
       </div>
-      <Card :data="products.list" :is-show-title="true" :is-show-car="true" />
+      <Card
+        :data="products.list"
+        :is-show-title="true"
+        :is-show-car="true"
+        :height="255"
+        :cover-height="160"
+      />
     </div>
-    <div class="center"></div>
+    <div class="center">
+      <Scene />
+    </div>
     <div class="right" :class="control.isFullScreen ? 'hidden' : 'right'">
       <div class="title-container">
         <img class="icon" src="@/assets/images/场景购.png" />
@@ -51,9 +60,9 @@ window.addEventListener('mousewheel', (e) => {
         :is-show-car="false"
         :is-load-hdr="true"
         :cover-width="260"
-        :coverHeight="105"
+        :coverHeight="100"
         :width="280"
-        :height="125"
+        :height="122"
         :mt="10"
       />
     </div>
@@ -62,6 +71,8 @@ window.addEventListener('mousewheel', (e) => {
 
 <style scoped lang="scss">
 .product-list {
+  z-index: 9;
+  position: relative;
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -85,14 +96,20 @@ window.addEventListener('mousewheel', (e) => {
   }
 
   .center {
-    padding-top: 46px;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
   }
 
   .title-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin: 0 0 10px 0;
     img {
       vertical-align: middle;
       width: 40px;
@@ -101,9 +118,9 @@ window.addEventListener('mousewheel', (e) => {
     }
 
     .text {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
-      color: #cc9966;
+      color: #ff4d4f;
     }
   }
 }
