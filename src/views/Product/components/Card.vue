@@ -1,5 +1,5 @@
 <script setup>
-import use3D from '@/utils/3d'
+// import use3D from '@/utils/3d'
 import { ref } from 'vue'
 
 defineProps({
