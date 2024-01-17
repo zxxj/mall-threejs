@@ -47,7 +47,7 @@ const currentSelected = ref(0)
 const handleClick = (item, index) => {
   console.log(item, index)
   // use3D.setModel(item.modelName)
-  console.log(use3D)
+  // console.log(use3D)
   currentSelected.value = index
 }
 
