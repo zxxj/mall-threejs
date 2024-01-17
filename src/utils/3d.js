@@ -11,6 +11,13 @@ class use3D {
     this.renderer
     this.model
     this.bottom // 模型底座
+    this.animateAction
+    this.mixer
+    this.spotLight1
+    this.spotLight2
+    this.spotLight3
+    this.spotLight4
+    this.clock = new THREE.Clock()
     this.init()
   }
 
@@ -18,9 +25,9 @@ class use3D {
     this.initScene()
     this.initCamera()
     this.initRenderer()
+    this.addMesh()
     this.initControls()
     this.animate()
-    this.addMesh()
   }
 
   initScene() {
@@ -57,14 +64,37 @@ class use3D {
       this.bottom = gltf.scene.children[2]
       this.scene.add(this.model)
       this.scene.add(this.bottom)
+
+      // this.scene.add(gltf.scene)
+
+      // 修改摄像头为模型摄像头
+      // this.camera = gltf.cameras[0]
+
+      // // 模型动画
+      // this.mixer = new THREE.AnimationMixer(this.camera)
+      // this.animateAction = this.mixer.clipAction(gltf.animations[0])
+      // // 设置动画播放时长
+      // this.animateAction.setDuration(20).setLoop(THREE.LoopOnce)
+      // this.animateAction.clampWhenFinished = true
+      // this.animateAction.play()
+
+      // // 设置灯光
+      // this.spotLight1 = gltf.scene.children[2].children[0]
+      // this.spotLight1.intensity = 1
+      // this.spotLight2 = gltf.scene.children[3].children[0]
+      // this.spotLight2.intensity = 1
+      // this.spotLight3 = gltf.scene.children[4].children[0]
+      // this.spotLight3.intensity = 1
     })
   }
 
-  addMesh() {
-    this.setModel('bag2.glb')
+  addMesh(modelName) {
+    this.setModel(modelName || 'bag2.glb')
   }
 
   render() {
+    var delta = this.clock.getDelta()
+    this.mixer && this.mixer.update(delta)
     this.renderer.render(this.scene, this.camera)
   }
 
